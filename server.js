@@ -1,3 +1,6 @@
+var indexRoutes = require('./routes/index');
+
+
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
