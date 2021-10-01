@@ -1,4 +1,5 @@
 var indexRoutes = require('./routes/index');
+var guidesRoutes = require('./routes/guides');
 
 
 var express = require('express');
@@ -53,6 +54,7 @@ app.use(function (req, res, next) {
 
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
+app.use('/', guidesRoutes);
 
 
 // invalid request, send 404 page
