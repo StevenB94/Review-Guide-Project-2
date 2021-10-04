@@ -1,15 +1,40 @@
-const Guide = require('../models/user');
-const Comment = require('../models/comment')
+const Guide = require('../models/guide');
 
 module.exports = {
   index,
   show,
-  addReview
+  addReview,
+  new: newGuide,
+  create
 };
+
+function newGuide(req, res){
+    res.render('guides/new');
+}
+
+function create(req, res){
+    console.log(req.body)
+
+    req.body.mainMechanics = req.body.mainMechanics;
+
+    req.body.phases = req.body.phases;
+
+    req.body.placement = req.body.placement;
+
+    const guide = new Guide(req.body);
+  guide.save(function(err) {
+    
+    if (err) return res.render('guide/new');
+    console.log(guide);
+    
+    res.redirect('/guides/new');
+  });
+
+}
 
 function show(req,res){
     Comment.find({}, function(err, comments){
-        res.render('guides/titan', {
+        res.render('guides/new', {
             comments
         });
     });
@@ -19,7 +44,7 @@ function addReview(req, res){
     let comment = new Comment(req.body)
     console.log('This is the comment ', comment)
     comment.save(function(err){
-        res.redirect('/titans');
+        res.redirect('/new');
     });
 }
 
