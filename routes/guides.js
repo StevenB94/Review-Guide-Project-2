@@ -3,6 +3,8 @@ var guidesCtrl = require('../controllers/guides');
 
 
 router.get('/guides', guidesCtrl.index);
+router.get('/:id', guidesCtrl.show);
+
 // router.post('/facts', isLoggedIn, guidesCtrl.addFact);
 
 

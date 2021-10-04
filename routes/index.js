@@ -16,8 +16,8 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/guide', // where do you want the client to go after you login 
-    failureRedirect : '/guides' // where do you want the client to go if login fails
+    successRedirect : '/guides', // where do you want the client to go after you login 
+    failureRedirect : '/guide' // where do you want the client to go if login fails
   }
 ));
 

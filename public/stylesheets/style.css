@@ -19,6 +19,7 @@
   margin-top: -5px;
 }
 
-h1 {
+.free {
   text-align: center;
+  inset-inline: end;
 }
