@@ -3,7 +3,8 @@ var guidesCtrl = require('../controllers/guides');
 
 
 router.get('/guides', guidesCtrl.index);
-router.get('/:id', guidesCtrl.show);
+router.get('/titans', guidesCtrl.show);
+router.post('/titans/reviews', guidesCtrl.addReview);
 
 // router.post('/facts', isLoggedIn, guidesCtrl.addFact);
 

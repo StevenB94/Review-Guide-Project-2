@@ -1,4 +1,4 @@
-const Guide = require('../models/guide')
+const Guide = require('../models/comment')
 // Movie <- is our Model that can talk to the db
 
 module.exports = {

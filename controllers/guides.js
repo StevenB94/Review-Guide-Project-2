@@ -1,13 +1,25 @@
 const Guide = require('../models/user');
+const Comment = require('../models/comment')
 
 module.exports = {
   index,
-  show
+  show,
+  addReview
 };
 
 function show(req,res){
-    Guide.findById(req.params.id, function(err, guide){
-        res.render('guides/titan');
+    Comment.find({}, function(err, comments){
+        res.render('guides/titan', {
+            comments
+        });
+    });
+}
+
+function addReview(req, res){
+    let comment = new Comment(req.body)
+    console.log('This is the comment ', comment)
+    comment.save(function(err){
+        res.redirect('/titans');
     });
 }
 

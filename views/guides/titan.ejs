@@ -10,19 +10,46 @@
     <h1>Titan Review Guide</h1>
 
 
+    <br /><br />
+    <h2>Reviews</h2>
     <form
->
-  <label>Review:</label>
-  <textarea name="content"></textarea>
-  <label>Rating:</label>
-  <select name="rating">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5" selected>5</option>
-  </select>
-  <input type="submit" value="Add Review" />
-</form>
-</body>
-</html>
+    id="add-review-form"
+    method="POST"
+    action="/titans/reviews"
+    >
+
+      <label>Review:</label>
+      <textarea name="content"></textarea>
+      <label>Rating:</label>
+      <select name="rating">
+         <!-- The name property is the key on req.body in our controller function that form is submitting to -->
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+      </select>
+      <input type="submit" value="Add Review" />
+    </form>
+
+
+    <% if (comments.length) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Comment</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% comments.forEach(function(r) { %>
+            <tr>
+              <td><%= r.content %></td>
+              <td><%= r.rating %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h5>No Reviews Yet</h5>
+    <% } %>
