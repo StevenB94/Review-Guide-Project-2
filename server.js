@@ -1,5 +1,7 @@
 var indexRoutes = require('./routes/index');
 var guidesRoutes = require('./routes/guides');
+const commentsRouter = require('./routes/comments');
+
 
 
 var express = require('express');
@@ -54,7 +56,8 @@ app.use(function (req, res, next) {
 
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
-app.use('/', guidesRoutes);
+app.use('/guides', guidesRoutes);
+app.use('/', commentsRouter);
 
 
 

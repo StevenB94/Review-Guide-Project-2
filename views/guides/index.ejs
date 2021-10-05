@@ -12,6 +12,27 @@
      <h1>Fighters Guide to Eorzea</h1>
      <a href="/auth/google"> Login with Google</a>
     </nav>
-    <a href="/new">New Guide</a>
+    <a href="/guides/new">New Guide</a>
+
+
+
+
+    <table id="list">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% guides.forEach(function(g) { %>
+            <tr>
+              <td><%= g.title %></td>
+              <td><a href="/guides/<%= g._id %>">DETAILS</a></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+
 </body>
 </html>

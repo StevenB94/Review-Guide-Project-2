@@ -1,9 +1,9 @@
 const Guide = require('../models/guide');
 
+
 module.exports = {
   index,
   show,
-  addReview,
   new: newGuide,
   create
 };
@@ -27,27 +27,24 @@ function create(req, res){
     if (err) return res.render('guide/new');
     console.log(guide);
     
-    res.redirect('/guides/new');
+    res.redirect('/guides');
   });
 
 }
 
+function index(req, res) {
+    Guide.find({}, function(err, guides) {
+      res.render('guides/index', { title: 'All Guides', guides });
+    });
+  }
+
 function show(req,res){
-    Comment.find({}, function(err, comments){
-        res.render('guides/new', {
-            comments
+    Guide.findById(req.params.id, function(err, guide){
+        res.render('guides/show', {
+            guide,
         });
     });
 }
-
-function addReview(req, res){
-    let comment = new Comment(req.body)
-    console.log('This is the comment ', comment)
-    comment.save(function(err){
-        res.redirect('/new');
-    });
-}
-
 
 function index(req, res, next) {
   console.log(req.query)

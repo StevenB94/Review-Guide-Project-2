@@ -1,4 +1,4 @@
-const Guide = require('../models/comment')
+const Guide = require('../models/guide')
 // Movie <- is our Model that can talk to the db
 
 module.exports = {
@@ -8,9 +8,10 @@ module.exports = {
 
 function create(req, res){
 	console.log(req.body)
+    res.send('test to see if it works')
 
-	
-	Guide.findById(req.params.id, function(err, guideDocument){ // <- movieDocument is the document of the movie from the db
+
+    Guide.findById(req.params.id, function(err, guideDocument){ // <- movieDocument is the document of the movie from the db
 		// 2 add the review to the movie document (aka movieDocument)
 		if(err){
 			console.log(err)
