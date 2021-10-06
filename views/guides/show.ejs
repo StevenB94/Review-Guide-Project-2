@@ -31,13 +31,29 @@
          <input type="submit" value="Add Comment" />
        </form>
 
+       
+       
 
     
 
       <% guide.comments.forEach(function(comment) { %>
-        <%= comment.userId %> 
+
+
+        <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+            <!-- Value attribute is being set to the comment's current text -->
+            <input name="content" value="<%= comment.content %>">
+            <select name="rating" value="<%= comment.rating %>">
+                The name property is the key on req.body in our controller function that form is submitting to
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5" selected>5</option>
+              </select>
+            <button type="submit">UPDATE COMMENT</button>
+          </form>
+
         <div class="comment">
-            <%= user._id %> 
           <%= comment.content %><br>
           <%= comment.rating %><br>
           <% if (comment.userId.equals(user._id)) { %>

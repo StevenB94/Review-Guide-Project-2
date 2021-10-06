@@ -3,8 +3,28 @@ const Guide = require('../models/guide')
 
 module.exports = {
 	create,
-    delete: deleteComment
+    delete: deleteComment,
+    update: updateComment
 }
+
+function updateComment(req, res) {
+    // Note the cool "dot" syntax to query on the property of a subdoc
+    Guide.findOne({'comments._id': req.params.id}, function(err, guide) {
+      // Find the comment subdoc using the id method on Mongoose arrays
+      // https://mongoosejs.com/docs/subdocs.html
+      const commentSubdoc = guide.comments.id(req.params.id);
+      // Ensure that the comment was created by the logged in user
+      if (!commentSubdoc.userId.equals(req.user._id)) return res.redirect(`/guides/${guide._id}`);
+      // Update the text of the comment
+      commentSubdoc.content = req.body.content;
+      commentSubdoc.rating = parseInt(req.body.rating);
+      // Save the updated book
+      guide.save(function(err) {
+        // Redirect back to the book's show view
+        res.redirect(`/guides/${guide._id}`);
+      });
+    });
+  }
 
 
 function deleteComment(req, res) {
