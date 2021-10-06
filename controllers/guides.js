@@ -8,6 +8,8 @@ module.exports = {
   create
 };
 
+
+
 function newGuide(req, res){
     res.render('guides/new');
 }
