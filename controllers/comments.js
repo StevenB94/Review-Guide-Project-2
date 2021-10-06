@@ -7,8 +7,6 @@ module.exports = {
 
 
 function create(req, res){
-	console.log(req.body)
-    res.send('test to see if it works')
 
 
     Guide.findById(req.params.id, function(err, guideDocument){ // <- movieDocument is the document of the movie from the db
@@ -17,9 +15,7 @@ function create(req, res){
 			console.log(err)
 			res.send(err)
 		}
-		console.log(guideDocument)
-		guideDocument.comments.push(req.body); // <- our review is req.body
-		// When we mutate (aka change a document) we have to tell the db, by saving
+		guideDocument.comments.push(req.body); 
 		guideDocument.save(function(err){
 				// 3 respond to the client (aka the browser)
 				// 
