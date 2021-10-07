@@ -14,7 +14,11 @@
 
     <nav>
      <a href="/guides/new">New Guide</a>
-     <a href= "/auth/google"> Login with Google</a>
+     <% if (user) { %>
+      <a href="/logout">Logout</a>
+     <% } else { %>
+      <a href= "/auth/google"> Login with Google</a>
+      <% } %>
     </nav>
 
 

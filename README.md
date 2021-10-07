@@ -15,7 +15,7 @@ This Site allows Signed in Users to Create there own helpful Guide to the many f
 
 #### Getting Started
 
-[Review Guide:]()
+[Review Guide:](https://review-guide.herokuapp.com/)
 
 #### Wireframe
 ![Wireframe:](https://i.imgur.com/I58tuUW.jpg)
