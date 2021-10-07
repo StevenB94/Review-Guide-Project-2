@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    font-family: Helvetica;
+    color: black;
+    text-align: center;
+    font-weight: 900;
+  }
+
+  body{
+    background-image: url('https://i.imgur.com/ok0hiP2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

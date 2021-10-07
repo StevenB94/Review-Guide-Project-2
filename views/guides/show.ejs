@@ -1,66 +1,91 @@
-<section id="show-page">
-    <div>Title:</div>
-    <div><%= guide.title %></div>
-    <div>Main Mechanics:</div>
-    <div><%= guide.MainMechanics %></div>
-    <div>Phases:</div>
-    <div><%= guide.Phases %></div>
-    <div>Placement:</div>
-    <div><%= guide.Placement %></div>
-  </section>
-
- <br /><br />
-      <h2>Reviews</h2>
-      <form
-      id="add-comment-form"
-      method="POST"
-      action="/guides/<%= guide.id %>/comments"
-      >
-  
-        <label>Review:</label>
-        <textarea name="content"></textarea>
-        <label>Rating:</label>
-        <select name="rating">
-           The name property is the key on req.body in our controller function that form is submitting to
-           <option value="1">1</option>
-           <option value="2">2</option>
-           <option value="3">3</option>
-           <option value="4">4</option>
-           <option value="5" selected>5</option>
-         </select>
-         <input type="submit" value="Add Comment" />
-       </form>
-
-       
-       
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style3.css">
+    <title>Document</title>
+</head>
+<body>
     
+    <section id="show-page">
+        <div>Title:</div>
+        <div><%= guide.title %></div>
+        <br>
+        <br>
+        <div>Main Mechanics:</div>
+        <div><%= guide.MainMechanics %></div>
+        <br>
+        <br>
+        <div>Phases:</div>
+        <div><%= guide.Phases %></div>
+        <br>
+        <br>
+        <div>Placement:</div>
+        <div><%= guide.Placement %></div>
+      </section>
+    
+     <br /><br />
+          <h2>Reviews</h2>
+          <form
+          id="add-comment-form"
+          method="POST"
+          action="/guides/<%= guide.id %>/comments"
+          >
+      
+            <label>Review:</label>
+            <br>
+            <textarea name="content"></textarea>
+            <br>
+            <label>Rating:</label>
+            <select name="rating">
+               The name property is the key on req.body in our controller function that form is submitting to
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5" selected>5</option>
+             </select>
+             <br>
+             <input type="submit" value="Add Comment" />
+           </form>
+           <br>
+           <br>
+          <% guide.comments.forEach(function(comment) { %>
+    
+    
+            <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+                <!-- Value attribute is being set to the comment's current text -->
+                <input name="content" value="<%= comment.content %>">
+                
+                <select name="rating" value="<%= comment.rating %>">
+                    <br>
+                    The name property is the key on req.body in our controller function that form is submitting to
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5" selected>5</option>
+                  </select>
+                  <br>
+                <button type="submit">UPDATE COMMENT</button>
+              </form>
+            
+            <div class="comment">
+              <%= comment.content %><br>
+              <%= comment.rating %><br>
+              <% if (comment.userId.equals(user._id)) { %>
+                <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                  <button type="submit">X</button>
+                </form>
+                <% } %>
+            </div>
+          <% }) %>
 
-      <% guide.comments.forEach(function(comment) { %>
 
 
-        <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
-            <!-- Value attribute is being set to the comment's current text -->
-            <input name="content" value="<%= comment.content %>">
-            <select name="rating" value="<%= comment.rating %>">
-                The name property is the key on req.body in our controller function that form is submitting to
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5" selected>5</option>
-              </select>
-            <button type="submit">UPDATE COMMENT</button>
-          </form>
 
-        <div class="comment">
-          <%= comment.content %><br>
-          <%= comment.rating %><br>
-          <% if (comment.userId.equals(user._id)) { %>
-            <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-              <button type="submit">X</button>
-            </form>
-            <% } %>
-        </div>
-      <% }) %>
+</body>
+</html>
     

@@ -4,7 +4,7 @@ var guidesCtrl = require('../controllers/guides');
 
 
 router.get('/new', guidesCtrl.new);
-router.post('/', guidesCtrl.create);
+router.post('/', isLoggedIn, guidesCtrl.create);
 router.get('/:id', guidesCtrl.show);
 router.get('/', guidesCtrl.index);
 
