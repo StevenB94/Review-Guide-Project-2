@@ -10,4 +10,9 @@
     background-image: url('https://i.imgur.com/ok0hiP2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-size: 100% 100%;
+    height: 100vh;
+    text-align: center;
+    color: cornsilk;
+    font-weight: 900;
   }

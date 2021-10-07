@@ -15,7 +15,9 @@ body {
     font-weight: 900;
 }
 
-
+#grow{
+    background-color: rgba(0, 0, 25, .5);
+}
 
 
 
