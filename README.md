@@ -12,6 +12,8 @@ This Site allows Signed in Users to Create there own helpful Guide to the many f
 4. MongoDB
 5. Express
 6. Mongoose
+7. node.js
+8. Trello
 
 #### Getting Started
 
