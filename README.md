@@ -17,6 +17,15 @@ This Site allows Signed in Users to Create there own helpful Guide to the many f
 
 [Review Guide:](https://review-guide.herokuapp.com/)
 
+#### Main Page
+![Main Page](https://i.imgur.com/Ucrmts6.png)
+
+#### New Guide
+![New Guide](https://i.imgur.com/BEmxwY1.png)
+
+#### Guide
+![Guide](https://i.imgur.com/nBSdsQq.png)
+
 #### Wireframe
 ![Wireframe:](https://i.imgur.com/I58tuUW.jpg)
 
